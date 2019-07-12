@@ -7,16 +7,50 @@ namespace Lab2
         static void Main(string[] args)
         {
             bool continuePrompt = false;
+            bool completeLengthPrompt = false;
+            bool completeWidthPrompt = false;
+            double parsedRoomLength;
+            double parsedRoomWidth;
+            Console.WriteLine("Welcome to Grand Circus's Room Detail Generator!");
+
             do
             {
-                Console.WriteLine("Welcome to Grand Circus's Room Detail Generator!");
-                Console.WriteLine("Enter Length:");
-                string userRoomLength = Console.ReadLine();
-                Console.WriteLine("Enter Width:");
-                string userRoomWidth = Console.ReadLine();
+                do
+                {
+                    Console.WriteLine("Enter Length:");
+                    string userRoomLength = Console.ReadLine();
 
-                double roomArea = (double.Parse(userRoomLength) * double.Parse(userRoomWidth));
-                double roomPerimeter = ((double.Parse(userRoomLength) * 2) + (double.Parse(userRoomWidth) * 2));
+                    if (double.TryParse(userRoomLength, out parsedRoomLength))
+                    {
+                        completeLengthPrompt = true;
+                    }
+                    else
+                    {
+                        completeLengthPrompt = false;
+                        Console.WriteLine("That's not a valid length. Please enter a number.");
+                    }
+                }
+                while (!completeLengthPrompt);
+
+                do
+                {
+                    Console.WriteLine("Enter Width:");
+                    string userRoomWidth = Console.ReadLine();
+
+                    if (double.TryParse(userRoomWidth, out parsedRoomWidth))
+                    {
+                        completeWidthPrompt = true;
+                    }
+                    else
+                    {
+                        completeWidthPrompt = false;
+                        Console.WriteLine("That's not a valid width. Please enter a number.");
+                    }
+                }
+                while (!completeWidthPrompt);
+
+                double roomArea = parsedRoomLength * parsedRoomWidth;
+                double roomPerimeter = (parsedRoomLength * 2) + (parsedRoomWidth * 2);
 
                 Console.WriteLine($"Area: {roomArea}");
                 Console.WriteLine($"Perimeter: {roomPerimeter}");
