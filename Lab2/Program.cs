@@ -6,9 +6,9 @@ namespace Lab2
     {
         static void Main(string[] args)
         {
-            bool continuePrompt = false;
-            bool completeLengthPrompt = false;
-            bool completeWidthPrompt = false;
+            bool continuePrompt;
+            bool completeLengthPrompt;
+            bool completeWidthPrompt;
             double parsedRoomLength;
             double parsedRoomWidth;
             Console.WriteLine("Welcome to Grand Circus's Room Detail Generator!");
